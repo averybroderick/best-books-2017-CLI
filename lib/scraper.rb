@@ -7,11 +7,11 @@ class Scraper
     end
   end
 
-  def self.genre_page_scrape(url)
+  def self.genre_page_scrape(genre, url)
     base = 'https://www.goodreads.com'
     url = Nokogiri::HTML(open(base + url))
     url.css("div.answerWrapper img").each do |title|
-      Book.new(title.attribute("alt").value)
+      Book.new(title.attribute("alt").value, genre)
     end
   end
 

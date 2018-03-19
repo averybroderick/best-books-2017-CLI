@@ -1,13 +1,15 @@
 class Book
-  attr_accessor :title
+  attr_accessor :title, :genre
 
    @@all = []
 
-   def initialize(title)
+   def initialize(title, genre)
      @title = title
+     @genre = genre
+     genre.books << self
    end
 
-   def self.all
+   def self.show_all
      @@all.each do |book|
        puts book.title
      end
